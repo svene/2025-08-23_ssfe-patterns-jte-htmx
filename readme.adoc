@@ -1,0 +1,6 @@
+Spring Boot App with HTML Controller
+
+== Usage
+
+- Start Application
+- Point browser to: http://localhost:8080/ which should display page1.html

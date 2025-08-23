@@ -4,3 +4,144 @@ Spring Boot App with HTML Controller
 
 - Start Application
 - Point browser to: http://localhost:8080/ which should display page1.html
+
+== Plain-JTE Patterns (WIP)
+
+TBD
+
+== JTE Spring View Component Patterns (WIP)
+
+see: https://github.com/tschuehly/spring-view-component
+
+=== Pattern: Insertion
+
+==== Intent
+Structure HTML hierachically using components
+
+==== Implementation
+
+[source,html]
+.SomeComponent.jte
+----
+<div>
+  ${new ExistingTagsComponent.Ctx(ctx.bookmarkSessionService())}
+</div>
+----
+
+[source,html]
+.SomeComponent.jte, with event-support
+----
+<div hx-trigger="some-event from:body" hx-get="${ExistingTags.URL}">
+  ${new ExistingTagsComponent.Ctx(ctx.bookmarkSessionService())}
+</div>
+----
+
+==== Related Patterns
+
+- Slots
+
+=== Slots
+
+==== Intent
+How to pass content from parent to child.
+
+==== Also Known As
+
+- template
+- layout
+- socket and plugin
+- outside in
+
+==== Applicability
+
+Use when
+
+- a child component has a rather large html content
+- a parent component needs to customize a rather small part (or parts) of the child component
+
+==== Implementation
+
+[source,java]
+.ParentComponent.java
+----
+class ParentComponent {
+  public record ParentCtx() {
+    public ChildCtx childCtx(Content childSlot1) {
+      return new ChildCtx(childSlot1);
+    }
+  }
+}
+----
+
+[source,html]
+.ParentComponent.jte
+----
+<div>parent: before</div>
+${ctx.childCtx(@`
+  <div>slot-1-content from parent</button>
+`)}
+<div>parent: after</div>
+----
+
+[source,java]
+.ChildComponent.java
+----
+class ChildComponent {
+  public record ChildCtx(Content slot1) {}
+}
+----
+
+[source,html]
+.ChildComponent.jte
+----
+<div>child: before</div>
+${ctx.slot1()}
+<div>child: after</div>
+----
+
+[source,html]
+.Result
+----
+<div>parent: before</div>
+<div>child: before</div>
+<div>slot-1-content from parent</button>
+<div>child: after</div>
+<div>parent: after</div>
+----
+
+==== Related Patterns
+
+- Insertion
+
+=== spring viewcomponent: component forwarder
+
+==== Intent
+forward a request from one component it to another one
+
+==== Applicability
+
+Use when
+
+- a component recognizes that it cannot
+handle the request itself
+
+==== Implementation
+
+[source,java]
+.ParentComponent.java
+----
+class FirstComponent {
+  public record FirstCtx() {}
+    @PostMapping(path = URL)
+    public ViewContext doit() {
+        if (someCondition) {
+            // forward:
+            return new OtherComponent.Ctx();
+        }
+        return new FirstCtx();
+    }
+}
+----
+== TODO
+
+- keep frontendstate in hidden input fields ?

@@ -5,12 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PagesController {
-	@GetMapping("/")
-	public String redirectRoot() {
-		return "redirect:/ui/pages/page1";
-	}
 
-	@GetMapping("/ui/pages/page1")
+	public static final String PAGE_1_URL = "/ui/pages/page1";
+
+	@GetMapping(PAGE_1_URL)
 	public String page1() {
 		return "pages/page1";
 	}

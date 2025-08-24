@@ -7,5 +7,102 @@ Spring Boot App with HTML Controller
 
 == Plain-JTE Patterns (WIP)
 
-TBD
+=== Pattern: Template-Injection
+
+[source,html]
+.page1.jte
+----
+<!-- SSFE-PATTERN: Template-Injection -->
+@template.pages.layout(
+content = @`
+<h1>Page 1</h1>
+`)
+----
+
+[source,html]
+.layout.jte
+----
+@import gg.jte.Content
+@import org.svenehrke.demo.web.PagesController
+
+@param Content content
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSFE-Patterns Demo with Plain JTE</title>
+	<script src="/webjars/htmx.org/2.0.4/dist/htmx.js"></script>
+</head>
+
+<body>
+<nav>
+    <a href="${PagesController.PAGE_1_URL}">Page 1</a>
+    <a href="${PagesController.PAGE_2_URL}">Page 2</a>
+</nav>
+		${content}
+</body>
+
+<footer>Footer</footer>
+</html>
+----
+
+
+=== Pattern: Template-Inclusion
+
+[source,html]
+.page2.jte
+----
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- SSFE-PATTERN: Template-Inclusion: -->
+@template.pages.pagestart()
+
+<body>
+<!-- SSFE-PATTERN: Template-Inclusion: -->
+@template.pages.pagenavigation()
+
+<h1>Page 2</h1>
+</body>
+
+<!-- SSFE-PATTERN: Template-Inclusion: -->
+@template.pages.pageend()
+
+</html>
+----
+
+[source,html]
+.pagestart.jte
+----
+<head>
+    <meta charset="UTF-8">
+	<title>SSFE-Patterns Demo with JTE-VC</title>
+	<script src="/webjars/htmx.org/2.0.4/dist/htmx.js"></script>
+</head>
+----
+
+[source,html]
+.pagenavigation.jte
+----
+@import org.svenehrke.demo.web.PagesController
+
+<nav>
+    <a href="${PagesController.PAGE_1_URL}">Page 1</a>
+    <a href="${PagesController.PAGE_2_URL}">Page 2</a>
+</nav>
+----
+
+[source,html]
+.pageend.jte
+----
+<footer>Footer</footer>
+----
+
+NOTE: JTE does not allow unclosed tags. In the example above this means the <body> start tag cannot be put at the end of pageend.jte for example.
+The workaround is to put it into the consumer (page2.jte).
+This is acceptable for simple cases.  +
+For non-simple cases it is better to use the Template-Injection pattern (using JTE-content).
+
+
 

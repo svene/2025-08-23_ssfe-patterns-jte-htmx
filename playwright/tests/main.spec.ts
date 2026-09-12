@@ -2,28 +2,45 @@ import { test, expect } from '@playwright/test';
 
 const BASE_URL = 'http://localhost:8080';
 
-// This variant is the minimal one: two pages wired with plain-JTE template
-// injection / inclusion, a shared nav, no module sections and no htmx demo.
-const PAGE_1 = '/ui/pages/page1';
-const PAGE_2 = '/ui/pages/page2';
+// "/" serves the landing page directly, one <section> per module (s02 skipped:
+// this variant is plain JTE, with no View-Components/JSX concept).
+const SECTION_HEADINGS = ['Simple Pages', 'Page Patterns', 'UI Patterns', 'HTMX Patterns'];
 
-test('root redirects to page 1', async ({ page }) => {
+// Every demo route the landing page links to.
+const DEMO_ROUTES = [
+  '/s01/d01', '/s01/d02', '/s01/d03', '/s01/d04', '/s01/d05',
+  '/s03/d01',
+  '/s03/d02?greeting=Hey%20You!',
+  '/s03/d03?greeting=Hey%20You!',
+  '/s03/d04p1',
+  '/s03/d04p2',
+  '/s04/d01',
+  '/s04/d02',
+  '/s05/d01',
+];
+
+test('landing page lists every module section', async ({ page }) => {
   await page.goto(BASE_URL + '/');
-  await expect(page).toHaveURL(BASE_URL + PAGE_1);
-  await expect(page.locator('h1')).toHaveText('Page 1');
+  await expect(page).toHaveTitle(/Hypermedia Patterns/);
+  for (const heading of SECTION_HEADINGS) {
+    await expect(page.locator('section.section', { hasText: heading })).toBeVisible();
+  }
 });
 
-test('nav links to both pages', async ({ page }) => {
-  await page.goto(BASE_URL + PAGE_1);
-  const nav = page.locator('nav');
-  await expect(nav.getByRole('link', { name: 'Page 1' })).toHaveAttribute('href', PAGE_1);
-  await expect(nav.getByRole('link', { name: 'Page 2' })).toHaveAttribute('href', PAGE_2);
+test('every demo route loads', async ({ page }) => {
+  for (const route of DEMO_ROUTES) {
+    const response = await page.goto(BASE_URL + route);
+    expect(response?.status(), `GET ${route}`).toBe(200);
+    await expect(page.locator('body')).toBeVisible();
+    const text = (await page.locator('body').innerText()).trim();
+    expect(text.length, `content of ${route}`).toBeGreaterThan(10);
+  }
 });
 
-test('page 2 loads via template inclusion', async ({ page }) => {
-  const response = await page.goto(BASE_URL + PAGE_2);
-  expect(response?.status()).toBe(200);
-  await expect(page.locator('h1')).toHaveText('Page 2');
-  await expect(page.locator('nav')).toBeVisible();
-  await expect(page.locator('footer')).toHaveText('Footer');
+test('s05 url-component demo swaps the fetched fragment in', async ({ page }) => {
+  await page.goto(BASE_URL + '/s05/d01');
+  const target = page.locator('#my-message');
+  await expect(target).toBeEmpty();
+  await page.getByRole('button', { name: 'Include Component' }).click();
+  await expect(target.locator('h3')).toHaveText('hello!');
 });

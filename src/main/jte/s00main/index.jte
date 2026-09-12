@@ -9,6 +9,7 @@
 @param String s03d04
 @param String s04d01
 @param String s04d02
+@param String s05d01
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +70,17 @@
             <div class="grid">
                 @template.fragments.maincard(url = s04d01, title = "Parent Child", subtitle = null, recommendation = null)
                 @template.fragments.maincard(url = s04d02, title = "Forwarder", subtitle = null, recommendation = null)
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h1 class="title">HTMX Patterns</h1>
+        <h2 class="subtitle">For more interactivity.</h2>
+
+        <div class="fixed-grid">
+            <div class="grid">
+                @template.fragments.maincard(url = s05d01, title = "URL Components", subtitle = "include components dynamically by their URL", recommendation = null)
             </div>
         </div>
     </section>

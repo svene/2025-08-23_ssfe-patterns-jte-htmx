@@ -7,6 +7,8 @@
 @param String s03d02
 @param String s03d03
 @param String s03d04
+@param String s04d01
+@param String s04d02
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +57,18 @@
                 @template.fragments.maincard(url = s03d02 + "?greeting=Hey You!", title = "Content Page", subtitle = "taking a parameter", recommendation = "When the page itself needs a parameter")
                 @template.fragments.maincard(url = s03d03 + "?greeting=Hey You!", title = "Custom Page", subtitle = "taking a parameter", recommendation = "When the opinionated content page does not fit")
                 @template.fragments.maincard(url = s03d04, title = "MPA Example", subtitle = "with menu", recommendation = null)
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h1 class="title">UI Patterns</h1>
+        <h2 class="subtitle">For reusable UI parts and components.</h2>
+
+        <div class="fixed-grid">
+            <div class="grid">
+                @template.fragments.maincard(url = s04d01, title = "Parent Child", subtitle = null, recommendation = null)
+                @template.fragments.maincard(url = s04d02, title = "Forwarder", subtitle = null, recommendation = null)
             </div>
         </div>
     </section>

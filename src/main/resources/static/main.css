@@ -1,0 +1,6 @@
+.area-border {
+	border-color: var(--bulma-info);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 4px;
+}

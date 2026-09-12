@@ -1,13 +1,22 @@
 package org.svenehrke.demo.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.svenehrke.demo.web.s01simplepages.S01Controller;
+
+/**
+ * Serves the landing page at {@code /}. The page lists every demo, grouped by
+ * module; each module contributes its menu-card URLs here and its own menu
+ * section to {@code s00main/index.jte}.
+ */
 @Controller
 public class MainController {
 
 	@GetMapping("/")
-	public String redirectRoot() {
-		return "redirect:" + PagesController.PAGE_1_URL;
+	public String main(Model model) {
+		model.addAllAttributes(S01Controller.menuUrls());
+		return "s00main/index";
 	}
 }

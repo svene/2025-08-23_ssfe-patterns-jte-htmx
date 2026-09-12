@@ -12,7 +12,7 @@ Spring Boot App with HTML Controller
 [source,html]
 .page1.jte
 ----
-<!-- SSFE-PATTERN: Template-Injection -->
+<!-- HYPERMEDIA-PATTERN: Template-Injection -->
 @template.pages.layout(
 content = @`
 <h1>Page 1</h1>
@@ -31,7 +31,7 @@ content = @`
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SSFE-Patterns Demo with Plain JTE</title>
+    <title>Hypermedia-Patterns Demo with Plain JTE</title>
 	<script src="/webjars/htmx.org/2.0.4/dist/htmx.js"></script>
 </head>
 
@@ -56,17 +56,17 @@ content = @`
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- SSFE-PATTERN: Template-Inclusion: -->
+<!-- HYPERMEDIA-PATTERN: Template-Inclusion: -->
 @template.pages.pagestart()
 
 <body>
-<!-- SSFE-PATTERN: Template-Inclusion: -->
+<!-- HYPERMEDIA-PATTERN: Template-Inclusion: -->
 @template.pages.pagenavigation()
 
 <h1>Page 2</h1>
 </body>
 
-<!-- SSFE-PATTERN: Template-Inclusion: -->
+<!-- HYPERMEDIA-PATTERN: Template-Inclusion: -->
 @template.pages.pageend()
 
 </html>
@@ -77,7 +77,7 @@ content = @`
 ----
 <head>
     <meta charset="UTF-8">
-	<title>SSFE-Patterns Demo with JTE-VC</title>
+	<title>Hypermedia-Patterns Demo with JTE-VC</title>
 	<script src="/webjars/htmx.org/2.0.4/dist/htmx.js"></script>
 </head>
 ----

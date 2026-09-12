@@ -1,5 +1,6 @@
 @param String title
 
+<%-- docs:start page --%>
 <%-- Shared <head> for the demo pages. --%>
 <head>
     <meta charset="UTF-8">
@@ -9,3 +10,4 @@
     <link rel="stylesheet" href="/main.css"/>
     <link rel="stylesheet" href="/simplepage.css"/>
 </head>
+<%-- docs:end page --%>

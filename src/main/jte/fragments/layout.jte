@@ -8,6 +8,7 @@
   page has the passive role and is injected into this reusable layout via its
   `content` parameter.
 --%>
+<%-- docs:start page --%>
 <!DOCTYPE html>
 <html lang="en">
 @template.fragments.pagehead(title = title)
@@ -19,3 +20,4 @@
 </div>
 </body>
 </html>
+<%-- docs:end page --%>

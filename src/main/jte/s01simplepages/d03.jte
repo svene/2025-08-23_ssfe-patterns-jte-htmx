@@ -1,4 +1,7 @@
+<%-- docs:start page --%>
+<%-- from model, passed by controller: --%>
 @param String greetee
+<%-- docs:end page --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +11,7 @@
 </head>
 <body class="page">
 <div>
+    <%-- docs:start page --%>
     <h1>Page with Params-Component</h1>
 
     <%--
@@ -18,6 +22,9 @@
       greeting = "Hey",
       greetee = greetee
     )
+    <%-- docs:end page --%>
+    <hr>
+    <a href="http://localhost:4321/technologies/00_jte/s01/">Docs</a>
 </div>
 </body>
 </html>

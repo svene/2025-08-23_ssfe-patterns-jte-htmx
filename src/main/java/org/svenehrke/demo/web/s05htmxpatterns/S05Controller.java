@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
  *       controller.</li>
  * </ul>
  */
+// docs:start class
 @Controller
 public class S05Controller {
+// docs:end class
 
-	public static final String D01_URL = "/s05/d01";
-	public static final String D01_MESSAGE_URL = "/s05/d01/message";
+	public static final String D01_URL = "/s05/d01";// docs: d01
+	public static final String D01_MESSAGE_URL = "/s05/d01/message";// docs: d01
 
 	/** URLs the landing page needs for this module's menu cards. */
 	public static Map<String, String> menuUrls() {
@@ -29,6 +31,7 @@ public class S05Controller {
 		);
 	}
 
+	// docs:start d01
 	@GetMapping(D01_URL)
 	public String d01(Model model) {
 		model.addAttribute("messageUrl", D01_MESSAGE_URL);
@@ -44,4 +47,5 @@ public class S05Controller {
 		model.addAttribute("message", message);
 		return "s05htmxpatterns/d01message";
 	}
-}
+	// docs:end d01
+}// docs: class

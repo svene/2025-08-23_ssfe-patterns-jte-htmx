@@ -6,6 +6,7 @@
 </head>
 <body class="page">
 <div>
+    <%-- docs:start page --%>
     <h1>Page with Nested Components</h1>
 
     @template.fragments.helloworldcontent(
@@ -17,6 +18,9 @@
         `)
         <p>after nested content</p>
     `)
+    <%-- docs:end page --%>
+    <hr>
+    <a href="http://localhost:4321/technologies/00_jte/s01/">Docs</a>
 </div>
 </body>
 </html>

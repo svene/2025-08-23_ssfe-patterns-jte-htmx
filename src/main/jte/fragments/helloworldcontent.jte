@@ -1,5 +1,6 @@
 @import gg.jte.Content
 
+<%-- docs:start component --%>
 @param Content greetingText
 
 <%-- A component with a content slot: the caller passes a markup fragment as
@@ -8,3 +9,4 @@
     <p>Hi there!</p>
     ${greetingText}
 </div>
+<%-- docs:end component --%>

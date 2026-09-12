@@ -10,6 +10,7 @@
   from the `selectedMenu` parameter; `p1Url` / `p2Url` also come from the
   controller.
 --%>
+<%-- docs:start page --%>
 <!DOCTYPE html>
 <html lang="en">
 @template.fragments.pagehead(title = "Application/Page Patterns")
@@ -34,6 +35,12 @@
     <div class="p-1 mt-1 area-border" style="min-height: 300px">
         ${content}
     </div>
+    <%-- docs:end page --%>
+
+    <hr>
+    <a href="http://localhost:4321/technologies/00_jte/s03/">Docs</a>
+    <%-- docs:start page --%>
 </div>
 </body>
 </html>
+<%-- docs:end page --%>

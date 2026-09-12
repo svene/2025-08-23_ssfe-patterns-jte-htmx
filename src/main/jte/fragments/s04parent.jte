@@ -4,6 +4,7 @@
   Parent fragment: builds a chunk of slot markup (interpolating its own
   `greeting` parameter) and passes it down into the child fragment.
 --%>
+<%-- docs:start component --%>
 <div>
     <h3>Parent</h3>
     <div class="area-border p-1">
@@ -12,3 +13,4 @@
         )
     </div>
 </div>
+<%-- docs:end component --%>

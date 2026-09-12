@@ -17,6 +17,7 @@
 <body>
 <div class="container mt-1">
     <div class="p-1 mt-1">
+        <%-- docs:start page --%>
         <h1 class="title">Custom Page with Param says: ${greeting}</h1>
 
         <div class="content">
@@ -29,7 +30,10 @@
             <p>In the Content-Page pattern the whole layout is reusable; here only the
                 individual parts are.</p>
         </div>
+        <%-- docs:end page --%>
     </div>
+    <hr>
+    <a href="http://localhost:4321/technologies/00_jte/s03/">Docs</a>
 </div>
 </body>
 </html>

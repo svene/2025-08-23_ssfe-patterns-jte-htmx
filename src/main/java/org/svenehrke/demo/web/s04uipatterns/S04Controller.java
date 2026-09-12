@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  *       render itself or delegate to another fragment.</li>
  * </ul>
  */
+// docs:start class
 @Controller
 public class S04Controller {
+// docs:end class
 
-	public static final String D01_URL = "/s04/d01";
-	public static final String D02_URL = "/s04/d02";
+	public static final String D01_URL = "/s04/d01";// docs: d01
+	public static final String D02_URL = "/s04/d02";// docs: d02
 
 	/** URLs the landing page needs for this module's menu cards. */
 	public static Map<String, String> menuUrls() {
@@ -28,13 +30,17 @@ public class S04Controller {
 		);
 	}
 
+	// docs:start d01
 	@GetMapping(D01_URL)
 	public String d01() {
 		return "s04uipatterns/d01";
 	}
+	// docs:end d01
 
+	// docs:start d02
 	@GetMapping(D02_URL)
 	public String d02() {
 		return "s04uipatterns/d02";
 	}
-}
+	// docs:end d02
+}// docs: class

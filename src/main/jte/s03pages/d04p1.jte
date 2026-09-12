@@ -4,6 +4,7 @@
 
 @template.fragments.s03d04mpalayout(
   content = @`
+    <%-- docs:start page --%>
     <div class="content">
         <p>The pages of this application all share one layout fragment.</p>
         <p>Unlike the custom-page pattern (d03), here the <strong>layout</strong> has
@@ -13,6 +14,7 @@
         <p>The injected content sits inside the coloured border; everything outside
             it comes from the layout.</p>
     </div>
+    <%-- docs:end page --%>
 `,
   selectedMenu = selectedMenu,
   p1Url = p1Url,

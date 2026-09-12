@@ -18,14 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
  *       layout that highlights the current page.</li>
  * </ul>
  */
+// docs:start class
 @Controller
 public class S03Controller {
+// docs:end class
 
-	public static final String D01_URL = "/s03/d01";
-	public static final String D02_URL = "/s03/d02";
-	public static final String D03_URL = "/s03/d03";
-	public static final String D04P1_URL = "/s03/d04p1";
-	public static final String D04P2_URL = "/s03/d04p2";
+	public static final String D01_URL = "/s03/d01";// docs: d01
+	public static final String D02_URL = "/s03/d02";// docs: d02
+	public static final String D03_URL = "/s03/d03";// docs: d03
+	public static final String D04P1_URL = "/s03/d04p1";// docs: d04
+	public static final String D04P2_URL = "/s03/d04p2";// docs: d04
 
 	/** URLs the landing page needs for this module's menu cards. */
 	public static Map<String, String> menuUrls() {
@@ -37,11 +39,14 @@ public class S03Controller {
 		);
 	}
 
+	// docs:start d01
 	@GetMapping(D01_URL)
 	public String d01() {
 		return "s03pages/d01";
 	}
+	// docs:end d01
 
+	// docs:start d02
 	@GetMapping(D02_URL)
 	public String d02(
 		@RequestParam(name = "greeting", defaultValue = "Hello") String greeting,
@@ -50,7 +55,9 @@ public class S03Controller {
 		model.addAttribute("greeting", greeting);
 		return "s03pages/d02";
 	}
+	// docs:end d02
 
+	// docs:start d03
 	@GetMapping(D03_URL)
 	public String d03(
 		@RequestParam(name = "greeting", defaultValue = "Hello") String greeting,
@@ -59,7 +66,9 @@ public class S03Controller {
 		model.addAttribute("greeting", greeting);
 		return "s03pages/d03";
 	}
+	// docs:end d03
 
+	// docs:start d04
 	@GetMapping(D04P1_URL)
 	public String d04p1(Model model) {
 		addMpaModel(model, "page1");
@@ -77,4 +86,5 @@ public class S03Controller {
 		model.addAttribute("p1Url", D04P1_URL);
 		model.addAttribute("p2Url", D04P2_URL);
 	}
-}
+	// docs:end d04
+}// docs: class

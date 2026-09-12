@@ -3,6 +3,10 @@
 @param String s01d03
 @param String s01d04
 @param String s01d05
+@param String s03d01
+@param String s03d02
+@param String s03d03
+@param String s03d04
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +41,20 @@
                 @template.fragments.maincard(url = s01d03 + "?greetee=You", title = "Page and Component", subtitle = "with parameters", recommendation = "When page and/or component need parameters")
                 @template.fragments.maincard(url = s01d04, title = "Content parameter", subtitle = "passed from page to component", recommendation = "When HTML needs to be passed into a component")
                 @template.fragments.maincard(url = s01d05, title = "Nested components", subtitle = "or: template in template", recommendation = "If you need components in content parameters")
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h1 class="title">Page Patterns</h1>
+        <h2 class="subtitle">Assembling a whole page — for MPAs or a single page.</h2>
+
+        <div class="fixed-grid">
+            <div class="grid">
+                @template.fragments.maincard(url = s03d01, title = "Content Page", subtitle = null, recommendation = "Recommended for most use cases")
+                @template.fragments.maincard(url = s03d02 + "?greeting=Hey You!", title = "Content Page", subtitle = "taking a parameter", recommendation = "When the page itself needs a parameter")
+                @template.fragments.maincard(url = s03d03 + "?greeting=Hey You!", title = "Custom Page", subtitle = "taking a parameter", recommendation = "When the opinionated content page does not fit")
+                @template.fragments.maincard(url = s03d04, title = "MPA Example", subtitle = "with menu", recommendation = null)
             </div>
         </div>
     </section>

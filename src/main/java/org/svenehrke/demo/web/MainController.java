@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.svenehrke.demo.web.s01simplepages.S01Controller;
+import org.svenehrke.demo.web.s03pages.S03Controller;
 
 /**
  * Serves the landing page at {@code /}. The page lists every demo, grouped by
@@ -17,6 +18,7 @@ public class MainController {
 	@GetMapping("/")
 	public String main(Model model) {
 		model.addAllAttributes(S01Controller.menuUrls());
+		model.addAllAttributes(S03Controller.menuUrls());
 		return "s00main/index";
 	}
 }
